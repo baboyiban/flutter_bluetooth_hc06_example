@@ -40,23 +40,28 @@ class _ButtonState extends State<ButtonDoubleComponent> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
-    return (Container(
+    return (SizedBox(
         height: 60,
         width: 90,
-        child: FlatButton(
+        child: TextButton(
           onPressed: () {
             _sendMessage(buttonClicado ? widget.comandOn! : widget.comandOff!);
             _changeButtonColor();
           },
           child: Text(
             widget.buttonName!,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
-          color: buttonClicado
-              ? Color.fromRGBO(237, 46, 39, 1)
-              : Color.fromRGBO(0, 0, 0, 1),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(buttonClicado
+                ? const Color.fromRGBO(237, 46, 39, 1)
+                : const Color.fromRGBO(0, 0, 0, 1)),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            ),
+          ),
         )));
   }
 

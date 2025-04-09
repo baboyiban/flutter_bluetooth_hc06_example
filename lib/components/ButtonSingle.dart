@@ -35,21 +35,27 @@ class _ButtonState extends State<ButtonSingleComponent> {
   final TextEditingController textEditingController = TextEditingController();
   List<_Message> messages = <_Message>[];
 
+  @override
   Widget build(BuildContext context) {
-    return (Container(
-        height: 60,
-        width: 80,
-        child: FlatButton(
-          onPressed: () {
-            _sendMessage(widget.comandOn!);
-          },
-          child: Text(
-            widget.buttonName!,
-            style: TextStyle(color: Colors.white, fontSize: 25),
+    return (SizedBox(
+      height: 60,
+      width: 80,
+      child: TextButton(
+        onPressed: () {
+          _sendMessage(widget.comandOn!);
+        },
+        child: Text(
+          widget.buttonName!,
+          style: const TextStyle(color: Colors.white, fontSize: 25),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(widget.colorButton),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           ),
-          color: widget.colorButton!,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-        )));
+        ),
+      ),
+    ));
   }
 
   _sendMessage(text) async {

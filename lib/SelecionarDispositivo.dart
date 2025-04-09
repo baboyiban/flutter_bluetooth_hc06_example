@@ -114,14 +114,14 @@ class _SelecionarDispositivoPage extends State<SelecionarDispositivoPage> {
                   .setDevice(_device.device!);
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                   settings: const RouteSettings(name: '/'),
-                  builder: (context) => HomePage()));
+                  builder: (context) => const HomePage()));
             },
           ),
         )
         .toList();
     return Scaffold(
       appBar: CustomAppBar(
-        Title: 'Bluetooh list',
+        title: 'Bluetooh list',
         isBluetooth: false,
         isDiscovering: false,
         onPress: () {},
