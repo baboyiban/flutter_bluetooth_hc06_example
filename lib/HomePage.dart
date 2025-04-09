@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        Title: 'Remote Arduino',
+        title: 'Remote Arduino',
         isBluetooth: true,
         isDiscovering: false,
         onPress: onPressBluetooth,
@@ -32,13 +32,13 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 5, left: 5, right: 5),
           child: Consumer<StatusConexaoProvider>(
-              builder: (context, StatusConnectionProvider, widget) {
-            return (StatusConnectionProvider.device == null
-                ? Row(
+              builder: (context, statusConnectionProvider, widget) {
+            return (statusConnectionProvider.device == null
+                ? const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.bluetooth_disabled_sharp, size: 50),
-                      const Text(
+                      Icon(Icons.bluetooth_disabled_sharp, size: 50),
+                      Text(
                         "Bluetooth Disconnected",
                         style: TextStyle(
                           fontSize: 20,
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                     ],
                   )
                 : ControlePrincipalPage(
-                    server: StatusConnectionProvider.device));
+                    server: statusConnectionProvider.device));
           }),
         ),
       ),
